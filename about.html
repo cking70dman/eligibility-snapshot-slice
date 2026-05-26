@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — IS-001 | DePaul HCI 594</title>
+  <meta name="description" content="About IS-001: researcher Chad King, DePaul University HCI 594 Independent Study, Chief Bud Corporation, Spring 2026." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Chief Bud</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="this.closest('nav').querySelector('.nav-links').classList.toggle('is-open')">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="prototype.html">Prototype</a></li>
+        <li><a href="process.html">Process</a></li>
+        <li><a href="findings.html">Findings</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== MAIN ===== -->
+  <main class="site-main">
+    <div class="container--narrow">
+
+      <div class="page-header">
+        <p class="page-header__eyebrow">IS-001 — About</p>
+        <h1 class="page-header__title">Researcher &amp; Project Info</h1>
+        <p class="page-header__desc">IS-001 is an HCI independent study conducted by Chad King at DePaul University in partnership with Chief Bud Corporation.</p>
+      </div>
+
+      <!-- Researcher -->
+      <div class="about-card">
+        <h2 class="about-card__heading">Researcher</h2>
+        <dl class="dl-grid">
+          <dt>Name</dt>
+          <dd>Chad King</dd>
+          <dt>Degree</dt>
+          <dd>MS Human-Computer Interaction — Candidate</dd>
+          <dt>Institution</dt>
+          <dd>DePaul University, College of Computing and Digital Media (CDM)</dd>
+          <dt>Location</dt>
+          <dd>Chicago, Illinois</dd>
+        </dl>
+      </div>
+
+      <!-- Course -->
+      <div class="about-card">
+        <h2 class="about-card__heading">Course &amp; Study</h2>
+        <dl class="dl-grid">
+          <dt>Course</dt>
+          <dd>HCI 594 — Independent Study</dd>
+          <dt>Study ID</dt>
+          <dd>IS-001</dd>
+          <dt>Project Title</dt>
+          <dd>Eligibility Snapshot UI</dd>
+          <dt>Timeline</dt>
+          <dd>Spring 2026</dd>
+          <dt>Approval</dt>
+          <dd>IS substitution approved by Professor Wanka</dd>
+          <dt>Faculty Advisor</dt>
+          <dd>Pending confirmation</dd>
+        </dl>
+      </div>
+
+      <!-- Organization -->
+      <div class="about-card">
+        <h2 class="about-card__heading">Organization</h2>
+        <dl class="dl-grid">
+          <dt>Name</dt>
+          <dd>Chief Bud Corporation</dd>
+          <dt>Type</dt>
+          <dd>Illinois Benefit Corporation</dd>
+          <dt>Focus</dt>
+          <dd>Veteran housing navigation, no-PII design, situation-based UX</dd>
+          <dt>Prototype</dt>
+          <dd><a href="https://pilot-dev.chiefbud.com" target="_blank" rel="noopener">pilot-dev.chiefbud.com</a></dd>
+          <dt>Design Spec</dt>
+          <dd><a href="https://pilot-dev.chiefbud.com/spec" target="_blank" rel="noopener">pilot-dev.chiefbud.com/spec</a></dd>
+        </dl>
+      </div>
+
+      <!-- Disclaimer -->
+      <div class="about-card" style="border-color: rgba(163, 9%, 62%, 0.3); background-color: rgba(150,168,163,0.05);">
+        <h2 class="about-card__heading" style="color: var(--color-text-muted); font-size: var(--text-base);">Disclaimer</h2>
+        <p style="font-size: var(--text-sm); color: var(--color-text-muted); line-height: var(--leading-relaxed);">
+          Chief Bud is not affiliated with the U.S. Department of Veterans Affairs. IS-001 is an academic research project conducted under the supervision of DePaul University's College of Computing and Digital Media. Any housing pathway information produced by the Eligibility Snapshot is informational only and does not constitute legal, financial, or benefits advice.
+        </p>
+      </div>
+
+      <!-- Contact / Explore -->
+      <div style="margin-top: 2.5rem; text-align: center;">
+        <h2 class="section-title" style="font-size: var(--text-2xl); margin-bottom: 1rem;">Explore the Study</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center;">
+          <a href="index.html" class="btn btn--muted btn--md">Project Overview</a>
+          <a href="research.html" class="btn btn--muted btn--md">Research</a>
+          <a href="prototype.html" class="btn btn--muted btn--md">Prototype</a>
+          <a href="process.html" class="btn btn--muted btn--md">Process</a>
+          <a href="findings.html" class="btn btn--muted btn--md">Findings</a>
+          <a href="https://pilot-dev.chiefbud.com" class="btn btn--primary btn--md" target="_blank" rel="noopener">Live Prototype ↗</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <p>IS-001 — HCI 594 Independent Study | DePaul University CDM | Chad King | Spring 2026</p>
+  </footer>
+
+</body>
+</html>
