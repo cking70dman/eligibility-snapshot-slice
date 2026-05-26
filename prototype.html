@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prototype — IS-001 | DePaul HCI 594</title>
+  <meta name="description" content="Chief Bud P1 prototype: 6-question Eligibility Snapshot intake. Design system summary, pre-test UX findings, and live prototype link." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Chief Bud</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="this.closest('nav').querySelector('.nav-links').classList.toggle('is-open')">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="prototype.html" class="active">Prototype</a></li>
+        <li><a href="process.html">Process</a></li>
+        <li><a href="findings.html">Findings</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== MAIN ===== -->
+  <main class="site-main">
+    <div class="container">
+
+      <div class="page-header">
+        <p class="page-header__eyebrow">P1 — Live Prototype</p>
+        <h1 class="page-header__title">Prototype &amp; Design System</h1>
+        <p class="page-header__desc">The P1 prototype implements the full 6-question Eligibility Snapshot intake and produces a structured housing pathway output. Built with the Chief Bud design system.</p>
+      </div>
+
+      <!-- CTA -->
+      <section class="section-block" style="text-align:center; padding: 1.5rem 0 3rem;">
+        <a href="https://pilot-dev.chiefbud.com" class="btn btn--primary btn--lg" target="_blank" rel="noopener">Open Live Prototype ↗</a>
+        <p style="margin-top: 1rem; font-size: var(--text-sm); color: var(--color-text-subtle);">Opens pilot-dev.chiefbud.com in a new tab</p>
+      </section>
+
+      <!-- Design System Summary -->
+      <section class="section-block">
+        <h2 class="section-title">Design System</h2>
+        <p class="section-subtitle">Chief Bud's design system provides a dark, high-contrast visual language built on a structured token system.</p>
+
+        <div class="card-grid card-grid--3">
+
+          <!-- Colors -->
+          <div class="card">
+            <p class="card__label">Colors</p>
+            <h3 class="card__title">Brand Palette</h3>
+            <div class="swatch-grid">
+              <div class="swatch">
+                <div class="swatch__color" style="background-color:#FFBF00;"></div>
+                <div class="swatch__label">Gold<br/>#FFBF00</div>
+              </div>
+              <div class="swatch">
+                <div class="swatch__color" style="background-color:#022429;"></div>
+                <div class="swatch__label">Green<br/>#022429</div>
+              </div>
+              <div class="swatch">
+                <div class="swatch__color" style="background-color:#048BA8;"></div>
+                <div class="swatch__label">Blue<br/>#048BA8</div>
+              </div>
+              <div class="swatch">
+                <div class="swatch__color" style="background-color:#3D215F;"></div>
+                <div class="swatch__label">Purple<br/>#3D215F</div>
+              </div>
+              <div class="swatch">
+                <div class="swatch__color" style="background-color:#E3655B;"></div>
+                <div class="swatch__label">Red<br/>#E3655B</div>
+              </div>
+              <div class="swatch">
+                <div class="swatch__color" style="background-color:#FFFFFF; border-color: var(--color-border);"></div>
+                <div class="swatch__label">White<br/>#FFFFFF</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Typography -->
+          <div class="card">
+            <p class="card__label">Typography</p>
+            <h3 class="card__title">Type System</h3>
+            <p class="card__body" style="margin-bottom: 1rem;">Two typefaces. One design language.</p>
+            <div style="margin-bottom: 0.75rem;">
+              <div style="font-family: 'Black Ops One', serif; font-size: 1.5rem; color: var(--color-primary); line-height: 1.25; margin-bottom: 0.25rem;">Black Ops One</div>
+              <div style="font-size: var(--text-xs); color: var(--color-text-subtle);">Display / Headings — 400 weight</div>
+            </div>
+            <div style="margin-bottom: 1rem;">
+              <div style="font-family: 'Overpass', sans-serif; font-size: 1rem; color: var(--color-text-base); line-height: 1.5; margin-bottom: 0.25rem;">Overpass Regular / Semibold / Bold</div>
+              <div style="font-size: var(--text-xs); color: var(--color-text-subtle);">Body / UI — 400, 600, 700 weight</div>
+            </div>
+            <div style="font-size: var(--text-xs); color: var(--color-text-subtle);">
+              Scale: 12 · 14 · 16 · 18 · 20 · 24 · 30 · 36 · 48 · 60px
+            </div>
+          </div>
+
+          <!-- Buttons -->
+          <div class="card">
+            <p class="card__label">Buttons</p>
+            <h3 class="card__title">Button Variants</h3>
+            <p class="card__body" style="margin-bottom: 1rem;">Four tones × three sizes. 120ms transitions.</p>
+            <div style="display: flex; flex-direction: column; gap: 0.75rem; align-items: flex-start;">
+              <a href="#" class="btn btn--primary btn--md" onclick="return false;">Primary</a>
+              <a href="#" class="btn btn--accent btn--md" onclick="return false;">Accent</a>
+              <a href="#" class="btn btn--destructive btn--md" onclick="return false;">Destructive</a>
+              <a href="#" class="btn btn--muted btn--md" onclick="return false;">Muted</a>
+            </div>
+          </div>
+
+        </div>
+
+        <p style="margin-top: 1.5rem; font-size: var(--text-sm); color: var(--color-text-muted);">
+          <a href="https://pilot-dev.chiefbud.com/spec" target="_blank" rel="noopener" style="color: var(--color-accent);">View Full Design System →</a>
+        </p>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- Pre-test UX Findings -->
+      <section class="section-block">
+        <h2 class="section-title">Pre-Test UX Findings</h2>
+        <p class="section-subtitle">Four issues identified through heuristic review before formal usability testing began.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Finding</th>
+                <th>Severity</th>
+                <th>Note</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td><strong>/intake URL bypasses consent gate</strong></td>
+                <td><span class="sev sev--3">3 — Major</span></td>
+                <td>Direct URL skips consent checkbox on landing page</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td><strong>Result renders below the fold</strong></td>
+                <td><span class="sev sev--2">2 — Moderate</span></td>
+                <td>No scroll cue after Q6 submit</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td><strong>URL never changes during flow</strong></td>
+                <td><span class="sev sev--1">1 — Minor</span></td>
+                <td>Results not bookmarkable or shareable</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td><strong>Progress bar shows 100% on result</strong></td>
+                <td><span class="sev sev--1">1 — Minor</span></td>
+                <td>Q7 label ambiguity — result state is not a question</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="margin-top: 1rem; font-size: var(--text-sm); color: var(--color-text-muted);">
+          Full finding records with recommendations are documented in <a href="findings.html" style="color: var(--color-accent);">Findings</a>.
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <p>IS-001 — HCI 594 Independent Study | DePaul University CDM | Chad King | Spring 2026</p>
+  </footer>
+
+</body>
+</html>
