@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research — IS-001 | DePaul HCI 594</title>
+  <meta name="description" content="IS-001 literature review: 7 key UX findings for veteran housing navigator design, and a competitive analysis of 8 existing tools." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Chief Bud</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="this.closest('nav').querySelector('.nav-links').classList.toggle('is-open')">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html" class="active">Research</a></li>
+        <li><a href="prototype.html">Prototype</a></li>
+        <li><a href="process.html">Process</a></li>
+        <li><a href="findings.html">Findings</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== MAIN ===== -->
+  <main class="site-main">
+    <div class="container">
+
+      <div class="page-header">
+        <p class="page-header__eyebrow">IS-001 — S1–S2 Deliverables</p>
+        <h1 class="page-header__title">Literature Review &amp; Competitive Analysis</h1>
+        <p class="page-header__desc">Seven key findings from the academic literature, an 8-tool competitive landscape, and strategic design implications for Chief Bud.</p>
+      </div>
+
+      <!-- Section 1: Lit Review -->
+      <section class="section-block">
+        <h2 class="section-title">Literature Review</h2>
+        <p class="section-subtitle">Seven evidence-based findings that frame the IS-001 design agenda.</p>
+        <div class="card-grid" style="grid-template-columns: 1fr;">
+
+          <div class="card">
+            <p class="card__label">Finding 01</p>
+            <h3 class="card__title">Digital access is high but uneven</h3>
+            <p class="card__body">97%+ of veterans use the internet, but older and rural veterans show lower digital literacy. Design must not assume fluency — onboarding language, help text, and error recovery must all be written for a range of comfort levels.</p>
+          </div>
+
+          <div class="card">
+            <p class="card__label">Finding 02</p>
+            <h3 class="card__title">Trust is the primary conversion barrier</h3>
+            <p class="card__body">Veterans distrust government digital systems. Trust signals — plain language, visible human fallback options, no-PII data handling — are the primary UX levers for converting initial engagement into task completion.</p>
+          </div>
+
+          <div class="card">
+            <p class="card__label">Finding 03</p>
+            <h3 class="card__title">Cognitive load from benefits complexity is the core UX problem</h3>
+            <p class="card__body">The fragmented program landscape produces high cognitive load at every decision point. A navigator UI must reduce perceived complexity without making legal or financial determinations on behalf of the user.</p>
+          </div>
+
+          <div class="card">
+            <p class="card__label">Finding 04</p>
+            <h3 class="card__title">Form-based interfaces consistently underperform</h3>
+            <p class="card__body">Conversational and wizard-style flows with contextual help show better task completion rates for this population compared to traditional form interfaces. Progressive disclosure reduces abandonment.</p>
+          </div>
+
+          <div class="card">
+            <p class="card__label">Finding 05</p>
+            <h3 class="card__title">Mobile-first is mandatory</h3>
+            <p class="card__body">Younger post-9/11 veterans skew mobile-primary. Rural veterans frequently use mobile as their only internet-connected device. Desktop-first design systematically excludes key segments of the target population.</p>
+          </div>
+
+          <div class="card">
+            <p class="card__label">Finding 06</p>
+            <h3 class="card__title">Accessibility gaps are structural</h3>
+            <p class="card__body">VA.gov and most federal tools fail WCAG 2.1 AA in practice — particularly for cognitive accessibility, TBI, and PTSD-affected users. Structural accessibility must be a design constraint from the first sketch, not a retrofit.</p>
+          </div>
+
+          <div class="card">
+            <p class="card__label">Finding 07</p>
+            <h3 class="card__title">Co-design with veterans improves adoption</h3>
+            <p class="card__body">Participatory design methods produce measurably higher task success rates than tools designed without veteran input. IS-001 prioritizes veteran recruitment for usability testing in both rounds.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- Section 2: Competitive Analysis -->
+      <section class="section-block">
+        <h2 class="section-title">Competitive Analysis</h2>
+        <p class="section-subtitle">Eight existing tools assessed across six dimensions. Chief Bud occupies a distinct gap: situation-based, no-PII, veteran-optimized, conversational.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Tool</th>
+                <th>Operator</th>
+                <th>Input</th>
+                <th>Output</th>
+                <th>Mobile</th>
+                <th>PII</th>
+                <th>Key Strength</th>
+                <th>Key Gap</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>VA.gov Housing Hub</strong></td>
+                <td>Federal (VA)</td>
+                <td>Browse / Search</td>
+                <td>Info + links</td>
+                <td>Partial</td>
+                <td>Auth required</td>
+                <td>Authoritative, trusted brand</td>
+                <td>Program-centric IA, jargon-heavy</td>
+              </tr>
+              <tr>
+                <td><strong>Benefits.gov</strong></td>
+                <td>Federal (OMB)</td>
+                <td>Wizard</td>
+                <td>Eligibility list</td>
+                <td>Yes</td>
+                <td>Email only</td>
+                <td>Structured intake, broad coverage</td>
+                <td>Not veteran-optimized</td>
+              </tr>
+              <tr>
+                <td><strong>211.org</strong></td>
+                <td>United Way</td>
+                <td>Search</td>
+                <td>Referral directory</td>
+                <td>Yes</td>
+                <td>None</td>
+                <td>Local relevance, real-time</td>
+                <td>No veteran-specific filtering</td>
+              </tr>
+              <tr>
+                <td><strong>HousingLink</strong></td>
+                <td>Nonprofit (MN)</td>
+                <td>Search + filter</td>
+                <td>Listings</td>
+                <td>Yes</td>
+                <td>None</td>
+                <td>Clean UX, accessible design</td>
+                <td>MN only, no eligibility screening</td>
+              </tr>
+              <tr>
+                <td><strong>FindHelp (Aunt Bertha)</strong></td>
+                <td>Private SaaS</td>
+                <td>Search</td>
+                <td>Referral list</td>
+                <td>Yes</td>
+                <td>Optional</td>
+                <td>SDOH-aware, professional-grade</td>
+                <td>Not veteran-specific</td>
+              </tr>
+              <tr>
+                <td><strong>VetCenter Locator</strong></td>
+                <td>Federal (VA)</td>
+                <td>Location search</td>
+                <td>Map + contacts</td>
+                <td>Yes</td>
+                <td>None</td>
+                <td>Simple, fast, trusted</td>
+                <td>Single-function</td>
+              </tr>
+              <tr>
+                <td><strong>DAV Benefits Navigator</strong></td>
+                <td>DAV (VSO)</td>
+                <td>Questionnaire</td>
+                <td>Benefits list</td>
+                <td>Yes</td>
+                <td>DoB, service info</td>
+                <td>VSO-trusted, veteran-optimized</td>
+                <td>Limited housing focus</td>
+              </tr>
+              <tr>
+                <td><strong>HUD Resource Locator</strong></td>
+                <td>Federal (HUD)</td>
+                <td>Location search</td>
+                <td>Program directory</td>
+                <td>Partial</td>
+                <td>None</td>
+                <td>HUD-authoritative</td>
+                <td>Designed for staff, not veterans</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- Section 3: Strategic Implications -->
+      <section class="section-block">
+        <h2 class="section-title">Strategic Implications for Chief Bud</h2>
+        <p class="section-subtitle">Seven design and product decisions supported by the competitive landscape.</p>
+        <div class="card">
+          <ul class="info-list">
+            <li>No existing tool combines veteran-specific targeting, no-PII intake, and conversational flow. Chief Bud occupies a genuine white space.</li>
+            <li>The dominant input pattern (form/search) is the weakest performer for veteran task completion — Chief Bud's wizard-style snapshot is competitively differentiated.</li>
+            <li>Federal tools earn trust through brand authority but lose it through usability. Chief Bud must earn trust through interaction quality and transparent data handling.</li>
+            <li>Mobile-first must be an engineering constraint, not a responsive afterthought. At least 40% of veteran digital interactions happen on mobile.</li>
+            <li>Output format matters as much as input format — referral lists without pathway context produce abandonment. Chief Bud must frame outputs as next steps, not lists.</li>
+            <li>DAV Navigator is the closest comparable in terms of veteran-centric intake, but lacks housing depth. Chief Bud should monitor DAV Navigator roadmap for convergence risk.</li>
+            <li>Accessibility is a market differentiator, not just a compliance requirement. Most competitors fail WCAG 2.1 AA for cognitive accessibility — Chief Bud can lead on this dimension.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <p>IS-001 — HCI 594 Independent Study | DePaul University CDM | Chad King | Spring 2026</p>
+  </footer>
+
+</body>
+</html>
