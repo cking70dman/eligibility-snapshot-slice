@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Findings — IS-001 | DePaul HCI 594</title>
+  <meta name="description" content="IS-001 usability findings: pre-test heuristic issues and live Round 1 session findings for the Chief Bud Eligibility Snapshot." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Chief Bud</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="this.closest('nav').querySelector('.nav-links').classList.toggle('is-open')">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="prototype.html">Prototype</a></li>
+        <li><a href="process.html">Process</a></li>
+        <li><a href="findings.html" class="active">Findings</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== MAIN ===== -->
+  <main class="site-main">
+    <div class="container">
+
+      <div class="page-header">
+        <p class="page-header__eyebrow">IS-001 — UX Findings</p>
+        <h1 class="page-header__title">Usability Findings</h1>
+        <p class="page-header__desc">Pre-test heuristic findings and live session findings from IS-001 usability testing rounds.</p>
+      </div>
+
+      <!-- Status Banner -->
+      <div class="banner banner--accent">
+        <strong>Round 1 testing in progress.</strong> Findings will be updated after each session. Pre-test findings are documented below — Round 1 session findings will appear as sessions are completed.
+      </div>
+
+      <!-- Pre-test Findings -->
+      <section class="section-block">
+        <h2 class="section-title">Pre-Test Findings</h2>
+        <p class="section-subtitle">Four issues identified through heuristic review prior to formal participant testing. Logged as UF-PRE series.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Screen</th>
+                <th>Theme</th>
+                <th>Severity</th>
+                <th>Evidence</th>
+                <th>Recommendation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>UF-PRE-001</strong></td>
+                <td><code style="font-size: var(--text-xs); background: var(--color-surface-raised); padding: 2px 6px; border-radius: 4px;">/intake</code></td>
+                <td>Consent gate bypassable via direct URL</td>
+                <td><span class="sev sev--3">3 — Major</span></td>
+                <td>Direct navigation to <code style="font-size: var(--text-xs); background: var(--color-surface-raised); padding: 2px 5px; border-radius: 4px;">/intake</code> skips the consent checkbox on the landing page</td>
+                <td>Add server-side consent gate or redirect unauthenticated <code style="font-size: var(--text-xs);">/intake</code> requests to landing page</td>
+              </tr>
+              <tr>
+                <td><strong>UF-PRE-002</strong></td>
+                <td><code style="font-size: var(--text-xs); background: var(--color-surface-raised); padding: 2px 6px; border-radius: 4px;">/intake result</code></td>
+                <td>Result renders below the fold</td>
+                <td><span class="sev sev--2">2 — Moderate</span></td>
+                <td>No auto-scroll or scroll indicator after Q6 submit — result panel renders outside viewport</td>
+                <td>Add smooth scroll-to-result on submit, or render result on a dedicated screen with clear visual break</td>
+              </tr>
+              <tr>
+                <td><strong>UF-PRE-003</strong></td>
+                <td><code style="font-size: var(--text-xs); background: var(--color-surface-raised); padding: 2px 6px; border-radius: 4px;">/intake</code></td>
+                <td>URL static throughout flow</td>
+                <td><span class="sev sev--1">1 — Minor</span></td>
+                <td>All steps remain at <code style="font-size: var(--text-xs);">/intake</code> — results are not bookmarkable or shareable via URL</td>
+                <td>Implement hash routing or route-per-question for result shareability</td>
+              </tr>
+              <tr>
+                <td><strong>UF-PRE-004</strong></td>
+                <td><code style="font-size: var(--text-xs); background: var(--color-surface-raised); padding: 2px 6px; border-radius: 4px;">/intake result</code></td>
+                <td>Progress bar reads 100% on result render</td>
+                <td><span class="sev sev--1">1 — Minor</span></td>
+                <td>Result state is not Q7 — the label is ambiguous and may confuse users about completion state</td>
+                <td>Hide progress bar on result render, or replace with a "Complete" label / checkmark state</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- Round 1 Empty State -->
+      <section class="section-block">
+        <h2 class="section-title">Round 1 Findings</h2>
+        <p class="section-subtitle">Moderated think-aloud sessions with veteran participants. 3–5 sessions planned.</p>
+
+        <div class="empty-state">
+          <p class="empty-state__text">
+            Round 1 findings will appear here after sessions are complete.<br />
+            Sessions are currently being scheduled. Check back as IS-001 progresses.
+          </p>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- Severity Key -->
+      <section class="section-block">
+        <h2 class="section-title" style="font-size: var(--text-xl);">Severity Scale</h2>
+        <div class="sev-key">
+          <div class="sev-key__item">
+            <span class="sev sev--1">1</span>
+            <span style="color: var(--color-text-muted);">Cosmetic — Does not affect task completion; fix if time allows</span>
+          </div>
+          <div class="sev-key__item">
+            <span class="sev sev--2">2</span>
+            <span style="color: var(--color-text-muted);">Moderate — Causes friction or confusion; fix before next round</span>
+          </div>
+          <div class="sev-key__item">
+            <span class="sev sev--3">3</span>
+            <span style="color: var(--color-text-muted);">Major — Significantly impairs task completion; prioritize fix</span>
+          </div>
+          <div class="sev-key__item">
+            <span class="sev sev--4">4</span>
+            <span style="color: var(--color-text-muted);">Blocker — Prevents task completion; must fix before any testing</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <p>IS-001 — HCI 594 Independent Study | DePaul University CDM | Chad King | Spring 2026</p>
+  </footer>
+
+</body>
+</html>
