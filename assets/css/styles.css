@@ -803,6 +803,356 @@ tbody td {
 }
 
 /* ============================================================
+   Page Hero (research.html and inner pages)
+   ============================================================ */
+
+.page-hero {
+  background: linear-gradient(135deg, var(--color-cb-green) 0%, var(--color-surface-raised) 100%);
+  border-bottom: 1px solid var(--color-border);
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.page-hero__title {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  color: var(--color-primary);
+  line-height: var(--leading-tight);
+  margin-bottom: 0.5rem;
+}
+
+.page-hero__subtitle {
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: var(--leading-relaxed);
+}
+
+/* ============================================================
+   Section Header (research page sections)
+   ============================================================ */
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--color-primary);
+}
+
+/* ============================================================
+   Doc Meta strip
+   ============================================================ */
+
+.doc-meta {
+  background-color: var(--color-surface-card);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.doc-meta-item {
+  font-size: var(--text-sm);
+}
+
+.doc-meta-item__label {
+  display: block;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-subtle);
+  margin-bottom: 0.2rem;
+}
+
+.doc-meta-item__value {
+  color: var(--color-text-base);
+  font-weight: 600;
+}
+
+/* ============================================================
+   Methodology Block
+   ============================================================ */
+
+.methodology-block {
+  background-color: var(--color-surface-card);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-primary);
+  border-radius: 6px;
+  padding: 1.5rem 2rem;
+}
+
+.methodology-block__title {
+  font-family: var(--font-display);
+  color: var(--color-primary);
+  font-size: var(--text-base);
+  margin-bottom: 0.75rem;
+}
+
+.methodology-block__body {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+}
+
+/* ============================================================
+   Tag List (pill tags)
+   ============================================================ */
+
+.tag-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.tag-list li,
+.tag-list span {
+  background-color: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  color: var(--color-primary);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+}
+
+/* ============================================================
+   Theme Grid and Cards
+   ============================================================ */
+
+.theme-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.theme-card {
+  background-color: var(--color-surface-card);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 1.5rem;
+  transition: border-color 120ms ease, transform 120ms ease;
+}
+
+.theme-card:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.theme-card__number {
+  font-family: var(--font-display);
+  color: var(--color-primary);
+  font-size: var(--text-4xl);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.theme-card__title {
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-text-base);
+  margin-bottom: 0.75rem;
+}
+
+.theme-card__body {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  margin-bottom: 1rem;
+}
+
+.theme-card__implication {
+  background-color: var(--color-surface-raised);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+}
+
+.theme-card__implication-label {
+  display: block;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-primary);
+  margin-bottom: 0.35rem;
+}
+
+.theme-card__implication-body {
+  display: block;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+
+/* ============================================================
+   Implication Grid and Cards
+   ============================================================ */
+
+.implication-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.implication-card {
+  background-color: var(--color-surface-card);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 1.25rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.implication-card__num {
+  background-color: var(--color-primary);
+  color: var(--color-primary-fg);
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.implication-card__body {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+
+.implication-card__body strong {
+  color: var(--color-text-base);
+}
+
+/* ============================================================
+   Gaps List
+   ============================================================ */
+
+.gaps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.gap-item {
+  background-color: var(--color-surface-card);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-accent);
+  border-radius: 6px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.gap-item__icon {
+  color: var(--color-accent);
+  font-size: var(--text-lg);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.gap-item__body {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+
+.gap-item__body strong {
+  color: var(--color-text-base);
+}
+
+/* ============================================================
+   Sources Block
+   ============================================================ */
+
+.sources-block {
+  background-color: var(--color-surface-card);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+}
+
+.sources-block__title {
+  font-family: var(--font-display);
+  color: var(--color-primary);
+  font-size: var(--text-base);
+  margin-bottom: 1rem;
+}
+
+.sources-list {
+  list-style: none;
+  counter-reset: source-counter;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sources-list li {
+  counter-increment: source-counter;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+  padding-left: 2.25rem;
+  position: relative;
+}
+
+.sources-list li::before {
+  content: counter(source-counter);
+  position: absolute;
+  left: 0;
+  background-color: var(--color-primary);
+  color: var(--color-primary-fg);
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 1px;
+}
+
+.sources-note {
+  margin-top: 1rem;
+  font-size: var(--text-xs);
+  color: var(--color-text-subtle);
+  font-style: italic;
+}
+
+/* ============================================================
+   Responsive — research page additions
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .page-hero__title {
+    font-size: var(--text-3xl);
+  }
+
+  .theme-grid,
+  .implication-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .doc-meta {
+    gap: 1rem;
+  }
+}
+
+/* ============================================================
    Responsive
    ============================================================ */
 

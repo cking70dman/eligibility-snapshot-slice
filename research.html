@@ -4,596 +4,227 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Research | Veteran Housing Benefit Eligibility Snapshot — IS-001</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Overpass:wght@300;400;600;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --gold: #C9A84C;
-      --gold-light: #E2C47A;
-      --gold-dark: #9E7A2E;
-      --green: #2D5016;
-      --green-mid: #3D6B1E;
-      --green-light: #4E8526;
-      --grey-950: #0A0A0A;
-      --grey-900: #111111;
-      --grey-800: #1C1C1C;
-      --grey-700: #2A2A2A;
-      --grey-600: #3A3A3A;
-      --grey-500: #555555;
-      --grey-400: #787878;
-      --grey-300: #A0A0A0;
-      --grey-200: #C8C8C8;
-      --grey-100: #E8E8E8;
-      --grey-50: #F5F5F5;
-      --white: #FFFFFF;
-      --font-display: 'Black Ops One', sans-serif;
-      --font-body: 'Overpass', sans-serif;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      background-color: var(--grey-900);
-      color: var(--grey-100);
-      font-family: var(--font-body);
-      font-size: 16px;
-      line-height: 1.6;
-    }
-
-    /* NAV */
-    nav {
-      background: var(--grey-950);
-      border-bottom: 2px solid var(--gold);
-      padding: 0 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 60px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .nav-brand {
-      font-family: var(--font-display);
-      color: var(--gold);
-      font-size: 1.2rem;
-      text-decoration: none;
-    }
-    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
-    .nav-links a {
-      color: var(--grey-200);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 600;
-      transition: color 120ms ease;
-    }
-    .nav-links a:hover { color: var(--gold); }
-    .nav-links a.active { color: var(--gold); border-bottom: 2px solid var(--gold); padding-bottom: 2px; }
-
-    /* HERO */
-    .page-hero {
-      background: linear-gradient(135deg, var(--green) 0%, var(--grey-900) 100%);
-      border-bottom: 1px solid var(--grey-700);
-      padding: 3rem 2rem;
-      text-align: center;
-    }
-    .page-hero h1 {
-      font-family: var(--font-display);
-      color: var(--gold);
-      font-size: 2.2rem;
-      margin-bottom: 0.5rem;
-    }
-    .page-hero p {
-      color: var(--grey-300);
-      font-size: 1rem;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    /* MAIN */
-    main { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem; }
-
-    /* SECTION HEADERS */
-    .section-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 2rem;
-      padding-bottom: 0.75rem;
-      border-bottom: 2px solid var(--gold);
-    }
-    .section-header h2 {
-      font-family: var(--font-display);
-      color: var(--gold);
-      font-size: 1.5rem;
-    }
-    .section-badge {
-      background: var(--green);
-      color: var(--gold);
-      font-size: 0.7rem;
-      font-weight: 700;
-      padding: 0.2rem 0.6rem;
-      border-radius: 4px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    section { margin-bottom: 4rem; }
-
-    /* METHODOLOGY BLOCK */
-    .methodology-block {
-      background: var(--grey-800);
-      border: 1px solid var(--grey-600);
-      border-left: 4px solid var(--gold);
-      border-radius: 6px;
-      padding: 1.5rem 2rem;
-      margin-bottom: 2rem;
-    }
-    .methodology-block h3 {
-      font-family: var(--font-display);
-      color: var(--gold-light);
-      font-size: 1rem;
-      margin-bottom: 0.75rem;
-    }
-    .methodology-block p {
-      color: var(--grey-200);
-      font-size: 0.95rem;
-      line-height: 1.7;
-    }
-    .methodology-block ul {
-      list-style: none;
-      margin-top: 0.75rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    .methodology-block ul li {
-      background: var(--grey-700);
-      color: var(--gold-light);
-      font-size: 0.8rem;
-      font-weight: 600;
-      padding: 0.25rem 0.75rem;
-      border-radius: 20px;
-      border: 1px solid var(--grey-600);
-    }
-
-    /* THEME CARDS */
-    .theme-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-    }
-    .theme-card {
-      background: var(--grey-800);
-      border: 1px solid var(--grey-600);
-      border-radius: 8px;
-      padding: 1.5rem;
-    }
-    .theme-card:hover {
-      border-color: var(--gold-dark);
-      transform: translateY(-2px);
-      transition: all 120ms ease;
-    }
-    .theme-number {
-      font-family: var(--font-display);
-      color: var(--gold);
-      font-size: 2rem;
-      line-height: 1;
-      margin-bottom: 0.5rem;
-    }
-    .theme-card h3 {
-      color: var(--white);
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-    }
-    .theme-card p {
-      color: var(--grey-300);
-      font-size: 0.9rem;
-      line-height: 1.6;
-      margin-bottom: 0.75rem;
-    }
-    .theme-card .implication {
-      background: var(--green);
-      border-radius: 4px;
-      padding: 0.75rem;
-      font-size: 0.85rem;
-      color: var(--gold-light);
-      font-weight: 600;
-    }
-    .theme-card .implication span {
-      color: var(--grey-300);
-      font-weight: 400;
-      display: block;
-      margin-top: 0.25rem;
-    }
-
-    /* DESIGN IMPLICATIONS */
-    .implications-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
-    .implication-card {
-      background: var(--grey-800);
-      border: 1px solid var(--grey-600);
-      border-radius: 6px;
-      padding: 1.25rem;
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-    }
-    .impl-num {
-      background: var(--gold);
-      color: var(--grey-950);
-      font-family: var(--font-display);
-      font-size: 1rem;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .implication-card p {
-      color: var(--grey-200);
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-
-    /* RESEARCH GAPS */
-    .gaps-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
-    .gap-item {
-      background: var(--grey-800);
-      border: 1px solid var(--grey-600);
-      border-left: 4px solid var(--green-light);
-      border-radius: 6px;
-      padding: 1.25rem 1.5rem;
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-    }
-    .gap-icon {
-      color: var(--green-light);
-      font-size: 1.2rem;
-      flex-shrink: 0;
-    }
-    .gap-item p {
-      color: var(--grey-200);
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-    .gap-item strong { color: var(--white); }
-
-    /* SOURCES */
-    .sources-block {
-      background: var(--grey-800);
-      border: 1px solid var(--grey-600);
-      border-radius: 8px;
-      padding: 1.5rem 2rem;
-    }
-    .sources-block h3 {
-      font-family: var(--font-display);
-      color: var(--gold-light);
-      font-size: 1rem;
-      margin-bottom: 1rem;
-    }
-    .sources-block ol {
-      list-style: none;
-      counter-reset: source-counter;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-    .sources-block ol li {
-      counter-increment: source-counter;
-      color: var(--grey-300);
-      font-size: 0.875rem;
-      line-height: 1.6;
-      padding-left: 2rem;
-      position: relative;
-    }
-    .sources-block ol li::before {
-      content: counter(source-counter);
-      position: absolute;
-      left: 0;
-      background: var(--gold);
-      color: var(--grey-950);
-      font-family: var(--font-display);
-      font-size: 0.75rem;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      top: 1px;
-    }
-    .sources-note {
-      margin-top: 1rem;
-      color: var(--grey-400);
-      font-size: 0.8rem;
-      font-style: italic;
-    }
-
-    /* PLAIN LANGUAGE BLOCK */
-    .plain-lang-block {
-      background: var(--grey-800);
-      border: 1px solid var(--grey-600);
-      border-radius: 6px;
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-    }
-    .plain-lang-block p {
-      color: var(--grey-200);
-      font-size: 0.95rem;
-      line-height: 1.7;
-    }
-    .plain-lang-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1rem;
-    }
-    .plain-lang-tags span {
-      background: var(--grey-700);
-      border: 1px solid var(--grey-500);
-      color: var(--grey-200);
-      font-size: 0.8rem;
-      padding: 0.2rem 0.7rem;
-      border-radius: 20px;
-    }
-
-    /* DOC META */
-    .doc-meta {
-      background: var(--grey-800);
-      border: 1px solid var(--grey-700);
-      border-radius: 6px;
-      padding: 1rem 1.5rem;
-      margin-bottom: 3rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-    }
-    .doc-meta-item { font-size: 0.85rem; }
-    .doc-meta-item .label { color: var(--grey-400); display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
-    .doc-meta-item .value { color: var(--grey-100); font-weight: 600; }
-
-    /* FOOTER */
-    footer {
-      background: var(--grey-950);
-      border-top: 1px solid var(--grey-700);
-      padding: 2rem;
-      text-align: center;
-      color: var(--grey-500);
-      font-size: 0.8rem;
-    }
-    footer a { color: var(--gold); text-decoration: none; }
-
-    @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .page-hero h1 { font-size: 1.6rem; }
-      .theme-grid { grid-template-columns: 1fr; }
-      .implications-grid { grid-template-columns: 1fr; }
-    }
-  </style>
+  <meta name="description" content="Literature review and research foundation for the Chief Bud Eligibility Snapshot UI. IS-001 DePaul HCI 594." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-brand">IS-001 // Eligibility Snapshot</a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="research.html" class="active">Research</a></li>
-    <li><a href="prototype.html">Prototype</a></li>
-    <li><a href="process.html">Process</a></li>
-    <li><a href="findings.html">Findings</a></li>
-    <li><a href="about.html">About</a></li>
-  </ul>
-</nav>
-
-<div class="page-hero">
-  <h1>Literature Review</h1>
-  <p>Peer-reviewed evidence base for the Veteran Housing Benefit Eligibility Snapshot UI design decisions</p>
-</div>
-
-<main>
-
-  <!-- DOC META -->
-  <div class="doc-meta">
-    <div class="doc-meta-item">
-      <span class="label">Document ID</span>
-      <span class="value"><a href="Veteran_Housing_Benefit_Eligibility_Snapshot_Literature_Review_FINAL.pdf">Literature Review</a></span>
-    </div>
-    <div class="doc-meta-item">
-      <span class="label">Status</span>
-      <span class="value">Final</span>
-    </div>
-    <div class="doc-meta-item">
-      <span class="label">Author</span>
-      <span class="value">Chad King (CDK)</span>
-    </div>
-    <div class="doc-meta-item">
-      <span class="label">Course</span>
-      <span class="value">HCI 594 Independent Study — DePaul CDM</span>
-    </div>
-    <div class="doc-meta-item">
-      <span class="label">Sources</span>
-      <span class="value">7 Peer-Reviewed Publications</span>
-    </div>
-  </div>
-
-  <!-- METHODOLOGY -->
-  <section>
-    <div class="section-header">
-      <h2>Methodology</h2>
-      <span class="section-badge">Peer-Reviewed</span>
-    </div>
-    <div class="methodology-block">
-      <h3>Source Selection</h3>
-      <p>Sources were selected from peer-reviewed venues for relevance to at least one of three primary themes: digital navigation tools for underserved populations, human navigator effectiveness, and decision aid design for complex benefit systems. Date range: 2014–2026 for HCI sources; pre-2014 foundational sources included where canonical. Final source set: 7 peer-reviewed publications.</p>
-      <ul>
-        <li>CHI</li>
-        <li>CSCW</li>
-        <li>Cochrane</li>
-        <li>JMIR Mental Health</li>
-        <li>JAMA Internal Medicine</li>
-        <li>American Economic Review</li>
-        <li>University Press</li>
+  <!-- ===== NAV ===== -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Eligibility Snapshot</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="this.closest('nav').querySelector('.nav-links').classList.toggle('is-open')">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html" class="active">Research</a></li>
+        <li><a href="prototype.html">Prototype</a></li>
+        <li><a href="process.html">Process</a></li>
+        <li><a href="findings.html">Findings</a></li>
+        <li><a href="about.html">About</a></li>
       </ul>
     </div>
-  </section>
+  </nav>
 
-  <!-- KEY THEMES -->
-  <section>
-    <div class="section-header">
-      <h2>Key Themes and Findings</h2>
-      <span class="section-badge">3 Themes</span>
-    </div>
-    <div class="theme-grid">
+  <!-- ===== PAGE HERO ===== -->
+  <div class="page-hero">
+    <h1 class="page-hero__title">Literature Review</h1>
+    <p class="page-hero__subtitle">Peer-reviewed evidence base for the Veteran Housing Benefit Eligibility Snapshot UI design decisions</p>
+  </div>
 
-      <div class="theme-card">
-        <div class="theme-number">01</div>
-        <h3>Digital Navigation Tools for Underserved Populations</h3>
-        <p>Stafford et al. identify the floor of user expectations for digital community resource tools: fresh and accurate resource information, minimal upfront data collection, and clear next-step routing rather than overwhelming program lists.</p>
-        <div class="implication">
-          Snapshot Implication
-          <span>The Snapshot must surface specific, actionable next steps — not exhaustive program directories. Minimal categorical input at intake. No PII.</span>
+  <!-- ===== MAIN ===== -->
+  <main class="site-main">
+    <div class="container">
+
+      <!-- DOC META -->
+      <div class="doc-meta">
+        <div class="doc-meta-item">
+          <span class="doc-meta-item__label">Document ID</span>
+          <span class="doc-meta-item__value"><a href="Veteran_Housing_Benefit_Eligibility_Snapshot_Literature_Review_FINAL.pdf">Literature Review</a></span>
+        </div>
+        <div class="doc-meta-item">
+          <span class="doc-meta-item__label">Status</span>
+          <span class="doc-meta-item__value">Final</span>
+        </div>
+        <div class="doc-meta-item">
+          <span class="doc-meta-item__label">Author</span>
+          <span class="doc-meta-item__value">Chad King (CDK)</span>
+        </div>
+        <div class="doc-meta-item">
+          <span class="doc-meta-item__label">Course</span>
+          <span class="doc-meta-item__value">HCI 594 Independent Study — DePaul CDM</span>
+        </div>
+        <div class="doc-meta-item">
+          <span class="doc-meta-item__label">Sources</span>
+          <span class="doc-meta-item__value">7 Peer-Reviewed Publications</span>
         </div>
       </div>
 
-      <div class="theme-card">
-        <div class="theme-number">02</div>
-        <h3>Human Navigator Effectiveness</h3>
-        <p>Kangowi et al. document the ceiling of human navigator effectiveness and supply the operational template: orient the user to what is available, surface document requirements proactively, plan against anticipated barriers, and refer to decision-making authorities rather than making determinations.</p>
-        <div class="implication">
-          Snapshot Implication
-          <span>The Snapshot's output structure (orientation, document checklist, next actions, human handoff) maps directly to the Kangowi navigator model. The tool functions as a digital community health worker.</span>
+      <!-- METHODOLOGY -->
+      <section class="section-block">
+        <div class="section-header">
+          <h2 class="section-title">Methodology</h2>
+          <span class="badge badge--complete">Peer-Reviewed</span>
         </div>
-      </div>
-
-      <div class="theme-card">
-        <div class="theme-number">03</div>
-        <h3>Decision Aid Design</h3>
-        <p>Stacey et al. and the International Patient Decision Aid Standards (IPDAS) document canonical decision aid elements: presentation of options without determination, rationale for ranked pathways, explicit statement of assumptions and unknowns, non-determination disclaimer, and actionable next steps.</p>
-        <div class="implication">
-          Snapshot Implication
-          <span>The Snapshot output sections correspond almost exactly to canonical IPDAS elements — enabling evaluation against an established quality standard rather than requiring a bespoke evaluation framework.</span>
+        <div class="methodology-block">
+          <h3 class="methodology-block__title">Source Selection</h3>
+          <p class="methodology-block__body">Sources were selected from peer-reviewed venues for relevance to at least one of three primary themes: digital navigation tools for underserved populations, human navigator effectiveness, and decision aid design for complex benefit systems. Date range: 2014–2026 for HCI sources; pre-2014 foundational sources included where canonical. Final source set: 7 peer-reviewed publications.</p>
+          <ul class="tag-list">
+            <li>CHI</li>
+            <li>CSCW</li>
+            <li>Cochrane</li>
+            <li>JMIR Mental Health</li>
+            <li>JAMA Internal Medicine</li>
+            <li>American Economic Review</li>
+            <li>University Press</li>
+          </ul>
         </div>
-      </div>
+      </section>
+
+      <!-- KEY THEMES -->
+      <section class="section-block">
+        <div class="section-header">
+          <h2 class="section-title">Key Themes and Findings</h2>
+          <span class="badge badge--complete">3 Themes</span>
+        </div>
+        <div class="theme-grid">
+
+          <div class="theme-card">
+            <div class="theme-card__number">01</div>
+            <h3 class="theme-card__title">Digital Navigation Tools for Underserved Populations</h3>
+            <p class="theme-card__body">Stafford et al. identify the floor of user expectations for digital community resource tools: fresh and accurate resource information, minimal upfront data collection, and clear next-step routing rather than overwhelming program lists.</p>
+            <div class="theme-card__implication">
+              <span class="theme-card__implication-label">Snapshot Implication</span>
+              <span class="theme-card__implication-body">The Snapshot must surface specific, actionable next steps — not exhaustive program directories. Minimal categorical input at intake. No PII.</span>
+            </div>
+          </div>
+
+          <div class="theme-card">
+            <div class="theme-card__number">02</div>
+            <h3 class="theme-card__title">Human Navigator Effectiveness</h3>
+            <p class="theme-card__body">Kangowi et al. document the ceiling of human navigator effectiveness and supply the operational template: orient the user to what is available, surface document requirements proactively, plan against anticipated barriers, and refer to decision-making authorities rather than making determinations.</p>
+            <div class="theme-card__implication">
+              <span class="theme-card__implication-label">Snapshot Implication</span>
+              <span class="theme-card__implication-body">The Snapshot's output structure (orientation, document checklist, next actions, human handoff) maps directly to the Kangowi navigator model. The tool functions as a digital community health worker.</span>
+            </div>
+          </div>
+
+          <div class="theme-card">
+            <div class="theme-card__number">03</div>
+            <h3 class="theme-card__title">Decision Aid Design</h3>
+            <p class="theme-card__body">Stacey et al. and the International Patient Decision Aid Standards (IPDAS) document canonical decision aid elements: presentation of options without determination, rationale for ranked pathways, explicit statement of assumptions and unknowns, non-determination disclaimer, and actionable next steps.</p>
+            <div class="theme-card__implication">
+              <span class="theme-card__implication-label">Snapshot Implication</span>
+              <span class="theme-card__implication-body">The Snapshot output sections correspond almost exactly to canonical IPDAS elements — enabling evaluation against an established quality standard rather than requiring a bespoke evaluation framework.</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- PLAIN LANGUAGE -->
+      <section class="section-block">
+        <div class="section-header">
+          <h2 class="section-title">Plain Language Discipline</h2>
+        </div>
+        <div class="methodology-block">
+          <p class="methodology-block__body">Regulatory text in the Snapshot output is rewritten to a sixth-to-eighth grade reading level. Acronyms are expanded on first use. Active-voice phrasing is preferred throughout. These conventions are codified in the Federal Plain Language Guidelines (PLAIN) and operationalized in the Snapshot's output style guide.</p>
+          <ul class="tag-list">
+            <span>Grade 6-8 Reading Level</span>
+            <span>Acronym Expansion on First Use</span>
+            <span>Active Voice</span>
+            <span>Federal PLAIN Guidelines</span>
+          </ul>
+        </div>
+      </section>
+
+      <!-- DESIGN IMPLICATIONS -->
+      <section class="section-block">
+        <div class="section-header">
+          <h2 class="section-title">Design Implications</h2>
+          <span class="badge badge--in-progress">Operationalized in IS-001</span>
+        </div>
+        <p class="section-subtitle">Six design implications are directly operationalized in the Eligibility Snapshot's current output format and UI design.</p>
+        <div class="implication-grid">
+          <div class="implication-card">
+            <div class="implication-card__num">1</div>
+            <p class="implication-card__body"><strong>Minimal Categorical Intake</strong> — No PII, no SSN, no claim numbers. Categorical inputs only.</p>
+          </div>
+          <div class="implication-card">
+            <div class="implication-card__num">2</div>
+            <p class="implication-card__body"><strong>Situation-Based Framing</strong> — Questions map to veteran life situations, not program eligibility criteria.</p>
+          </div>
+          <div class="implication-card">
+            <div class="implication-card__num">3</div>
+            <p class="implication-card__body"><strong>Navigator Model Output</strong> — Orient, document checklist, barrier planning, human handoff.</p>
+          </div>
+          <div class="implication-card">
+            <div class="implication-card__num">4</div>
+            <p class="implication-card__body"><strong>IPDAS-Compliant Structure</strong> — Ranked pathways, rationale, assumptions, disclaimer, next actions.</p>
+          </div>
+          <div class="implication-card">
+            <div class="implication-card__num">5</div>
+            <p class="implication-card__body"><strong>Plain Language Discipline</strong> — Grade 6-8 reading level, acronym expansion, active voice.</p>
+          </div>
+          <div class="implication-card">
+            <div class="implication-card__num">6</div>
+            <p class="implication-card__body"><strong>Human Handoff as Terminal Step</strong> — Every output ends with a specific named human next step.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- RESEARCH GAPS -->
+      <section class="section-block">
+        <div class="section-header">
+          <h2 class="section-title">Research Gaps</h2>
+          <span class="badge badge--complete">IS-001 Addresses All Three</span>
+        </div>
+        <p class="section-subtitle">Three gaps identified that the IS-001 capstone study is positioned to address.</p>
+        <div class="gaps-list">
+          <div class="gap-item">
+            <div class="gap-item__icon">&#9651;</div>
+            <p class="gap-item__body"><strong>No published UX research</strong> on veteran-specific housing navigator tools as a distinct category from general benefit navigation tools.</p>
+          </div>
+          <div class="gap-item">
+            <div class="gap-item__icon">&#9651;</div>
+            <p class="gap-item__body"><strong>No comparative usability studies</strong> of wizard-style vs. conversational AI intake for veteran housing benefit navigation.</p>
+          </div>
+          <div class="gap-item">
+            <div class="gap-item__icon">&#9651;</div>
+            <p class="gap-item__body"><strong>No published studies</strong> evaluating decision aid quality standards (IPDAS) applied to AI-generated veteran benefit guidance outputs.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SOURCES -->
+      <section class="section-block">
+        <div class="section-header">
+          <h2 class="section-title">Sources</h2>
+          <span class="badge badge--complete">7 Peer-Reviewed</span>
+        </div>
+        <div class="sources-block">
+          <h3 class="sources-block__title">Final Source Set</h3>
+          <ol class="sources-list">
+            <li>Stafford et al. — Digital community resource navigation tool effectiveness. <em>JMIR Mental Health.</em></li>
+            <li>Kangowi et al. — Community health worker (human navigator) operational model. <em>JAMA Internal Medicine.</em></li>
+            <li>Stacey et al. — International Patient Decision Aid Standards (IPDAS). <em>Cochrane Database of Systematic Reviews.</em></li>
+            <li>Bansal et al. — Human-AI team decision-making and explanation effects. <em>CHI / CSCW.</em></li>
+            <li>Eubanks, V. — Automating inequality: How high-tech tools profile, police, and punish the poor. <em>St. Martin's Press.</em></li>
+            <li>Additional peer-reviewed source. <em>American Economic Review.</em></li>
+            <li>Additional peer-reviewed source. <em>CHI / CSCW.</em></li>
+          </ol>
+          <p class="sources-note">Full citations on file with the principal investigator. Available upon request. Supporting contextual reference (not a research source): Federal Plain Language Guidelines — Plain Language Action and Information Network (PLAIN).</p>
+        </div>
+      </section>
 
     </div>
-  </section>
+  </main>
 
-  <!-- PLAIN LANGUAGE -->
-  <section>
-    <div class="section-header">
-      <h2>Plain Language Discipline</h2>
-    </div>
-    <div class="plain-lang-block">
-      <p>Regulatory text in the Snapshot output is rewritten to a sixth-to-eighth grade reading level. Acronyms are expanded on first use. Active-voice phrasing is preferred throughout. These conventions are codified in the Federal Plain Language Guidelines (PLAIN) and operationalized in the Snapshot's output style guide.</p>
-      <div class="plain-lang-tags">
-        <span>Grade 6-8 Reading Level</span>
-        <span>Acronym Expansion on First Use</span>
-        <span>Active Voice</span>
-        <span>Federal PLAIN Guidelines</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- DESIGN IMPLICATIONS -->
-  <section>
-    <div class="section-header">
-      <h2>Design Implications</h2>
-      <span class="section-badge">Operationalized in IS-001</span>
-    </div>
-    <p style="color: var(--grey-300); margin-bottom: 1.5rem; font-size: 0.95rem;">Six design implications are directly operationalized in the Eligibility Snapshot's current output format and UI design.</p>
-    <div class="implications-grid">
-      <div class="implication-card">
-        <div class="impl-num">1</div>
-        <p><strong style="color:var(--white)">Minimal Categorical Intake</strong> — No PII, no SSN, no claim numbers. Categorical inputs only.</p>
-      </div>
-      <div class="implication-card">
-        <div class="impl-num">2</div>
-        <p><strong style="color:var(--white)">Situation-Based Framing</strong> — Questions map to veteran life situations, not program eligibility criteria.</p>
-      </div>
-      <div class="implication-card">
-        <div class="impl-num">3</div>
-        <p><strong style="color:var(--white)">Navigator Model Output</strong> — Orient, document checklist, barrier planning, human handoff.</p>
-      </div>
-      <div class="implication-card">
-        <div class="impl-num">4</div>
-        <p><strong style="color:var(--white)">IPDAS-Compliant Structure</strong> — Ranked pathways, rationale, assumptions, disclaimer, next actions.</p>
-      </div>
-      <div class="implication-card">
-        <div class="impl-num">5</div>
-        <p><strong style="color:var(--white)">Plain Language Discipline</strong> — Grade 6-8 reading level, acronym expansion, active voice.</p>
-      </div>
-      <div class="implication-card">
-        <div class="impl-num">6</div>
-        <p><strong style="color:var(--white)">Human Handoff as Terminal Step</strong> — Every output ends with a specific named human next step.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- RESEARCH GAPS -->
-  <section>
-    <div class="section-header">
-      <h2>Research Gaps</h2>
-      <span class="section-badge">IS-001 Addresses All Three</span>
-    </div>
-    <p style="color: var(--grey-300); margin-bottom: 1.5rem; font-size: 0.95rem;">Three gaps identified that the IS-001 capstone study is positioned to address.</p>
-    <div class="gaps-list">
-      <div class="gap-item">
-        <div class="gap-icon">&#9651;</div>
-        <p><strong>No published UX research</strong> on veteran-specific housing navigator tools as a distinct category from general benefit navigation tools.</p>
-      </div>
-      <div class="gap-item">
-        <div class="gap-icon">&#9651;</div>
-        <p><strong>No comparative usability studies</strong> of wizard-style vs. conversational AI intake for veteran housing benefit navigation.</p>
-      </div>
-      <div class="gap-item">
-        <div class="gap-icon">&#9651;</div>
-        <p><strong>No published studies</strong> evaluating decision aid quality standards (IPDAS) applied to AI-generated veteran benefit guidance outputs.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SOURCES -->
-  <section>
-    <div class="section-header">
-      <h2>Sources</h2>
-      <span class="section-badge">7 Peer-Reviewed</span>
-    </div>
-    <div class="sources-block">
-      <h3>Final Source Set</h3>
-      <ol>
-        <li>Stafford et al. — Digital community resource navigation tool effectiveness. <em>JMIR Mental Health.</em></li>
-        <li>Kangowi et al. — Community health worker (human navigator) operational model. <em>JAMA Internal Medicine.</em></li>
-        <li>Stacey et al. — International Patient Decision Aid Standards (IPDAS). <em>Cochrane Database of Systematic Reviews.</em></li>
-        <li>Bansal et al. — Human-AI team decision-making and explanation effects. <em>CHI / CSCW.</em></li>
-        <li>Eubanks, V. — Automating inequality: How high-tech tools profile, police, and punish the poor. <em>St. Martin's Press.</em></li>
-        <li>Additional peer-reviewed source. <em>American Economic Review.</em></li>
-        <li>Additional peer-reviewed source. <em>CHI / CSCW.</em></li>
-      </ol>
-      <p class="sources-note">Full citations on file with the principal investigator. Available upon request. Supporting contextual reference (not a research source): Federal Plain Language Guidelines — Plain Language Action and Information Network (PLAIN).</p>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <p>IS-001 — HCI 594 Independent Study &nbsp;|&nbsp; DePaul University, College of Computing and Digital Media &nbsp;|&nbsp; <a href="https://pilot-dev.chiefbud.com" target="_blank">Live Prototype</a></p>
-</footer>
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <p>IS-001 — HCI 594 Independent Study &nbsp;|&nbsp; DePaul University, College of Computing and Digital Media &nbsp;|&nbsp; <a href="https://pilot-dev.chiefbud.com" target="_blank" rel="noopener">Live Prototype</a></p>
+  </footer>
 
 </body>
 </html>
