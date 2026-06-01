@@ -20,7 +20,7 @@ is conducted by the student researcher.
 **Chad King**  
 MS Human-Computer Interaction Candidate  
 College of Computing and Digital Media  
-DePaul University, Chicago, Illinois  
+DePaul University, Chicago, Illinois 
 cking70@depaul.edu
 
 ---
