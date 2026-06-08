@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eligibility Snapshot — Conversation Flow | Chief Bud</title>
+  <meta name="description" content="Process diagram and description of the Chief Bud Eligibility Snapshot conversation flow — five intake sections, branching logic, and benefit pathway routing." />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <style>
+    /* ── Flow Diagram ────────────────────────────────────────── */
+    .flow-wrap {
+      overflow-x: auto;
+      padding: 0.25rem 0 1.5rem;
+    }
+
+    .flow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      min-width: 320px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Node types */
+    .flow-node {
+      width: 100%;
+      max-width: 520px;
+      border-radius: 8px;
+      padding: 0.875rem 1.25rem;
+      text-align: center;
+      font-family: var(--font-sans);
+      font-size: var(--text-sm);
+      position: relative;
+    }
+
+    .flow-node--start,
+    .flow-node--end {
+      background: var(--color-primary);
+      color: var(--color-primary-fg);
+      font-weight: 700;
+      border-radius: 999px;
+      font-size: var(--text-base);
+      max-width: 240px;
+    }
+
+    .flow-node--step {
+      background: var(--color-surface-card);
+      border: 1px solid var(--color-border);
+      color: var(--color-text-base);
+    }
+
+    .flow-node--step .node-label {
+      display: block;
+      font-size: var(--text-xs);
+      color: var(--color-accent);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+
+    .flow-node--step .node-title {
+      font-weight: 700;
+      font-size: var(--text-base);
+      color: var(--color-text-base);
+      margin-bottom: 0.25rem;
+    }
+
+    .flow-node--step .node-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.375rem;
+      justify-content: center;
+      margin-top: 0.5rem;
+    }
+
+    .flow-node--step .node-option {
+      background: var(--color-surface-raised);
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      padding: 0.2rem 0.6rem;
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
+
+    .flow-node--branch {
+      background: transparent;
+      border: 2px solid var(--color-accent);
+      color: var(--color-accent);
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: var(--text-sm);
+      max-width: 380px;
+    }
+
+    /* Arrows between nodes */
+    .flow-arrow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      color: var(--color-text-subtle);
+      line-height: 1;
+      padding: 4px 0;
+    }
+
+    .flow-arrow__line {
+      width: 2px;
+      height: 18px;
+      background: var(--color-border);
+    }
+
+    .flow-arrow__head {
+      width: 0;
+      height: 0;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      border-top: 10px solid var(--color-border);
+    }
+
+    /* Branch split layout */
+    .flow-split {
+      display: flex;
+      gap: 1rem;
+      width: 100%;
+      max-width: 680px;
+      justify-content: center;
+    }
+
+    .flow-branch {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    .flow-branch__label {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-text-muted);
+      margin-bottom: 6px;
+      text-align: center;
+    }
+
+    .flow-node--outcome {
+      background: var(--color-surface-card);
+      border: 1px solid var(--color-accent);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      text-align: center;
+      width: 100%;
+    }
+
+    .flow-node--outcome .node-title {
+      font-weight: 700;
+      font-size: var(--text-sm);
+      color: var(--color-text-base);
+      margin-bottom: 0.25rem;
+    }
+
+    .flow-node--outcome .node-desc {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
+
+    /* Section key */
+    .section-key {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .key-item {
+      background: var(--color-surface-card);
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+    }
+
+    .key-item__code {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-accent);
+      margin-bottom: 0.25rem;
+    }
+
+    .key-item__title {
+      font-weight: 700;
+      font-size: var(--text-sm);
+      color: var(--color-text-base);
+      margin-bottom: 0.25rem;
+    }
+
+    .key-item__desc {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
+
+    /* Back link */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      margin-bottom: 1.5rem;
+      transition: color 120ms ease;
+    }
+
+    .back-link:hover {
+      color: var(--color-accent);
+    }
+
+    .back-link__arrow {
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    /* Design note badge */
+    .design-note {
+      display: inline-block;
+      background: rgba(4,139,168,0.12);
+      border: 1px solid rgba(4,139,168,0.3);
+      border-radius: 4px;
+      padding: 0.15rem 0.5rem;
+      font-size: var(--text-xs);
+      color: var(--color-accent);
+      font-weight: 600;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .flow-split {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .flow-branch {
+        width: 100%;
+        max-width: 420px;
+      }
+
+      .section-key {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">Eligibility Snapshot</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" onclick="this.closest('nav').querySelector('.nav-links').classList.toggle('is-open')">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../research.html">Research</a></li>
+        <li><a href="../prototype.html">Prototype</a></li>
+        <li><a href="../process.html">Process</a></li>
+        <li><a href="../findings.html">Findings</a></li>
+        <li><a href="../about.html">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== MAIN ===== -->
+  <main class="site-main">
+    <div class="container">
+
+      <a href="../index.html" class="back-link">
+        <span class="back-link__arrow">←</span> Back to Home
+      </a>
+
+      <div class="page-header">
+        <p class="page-header__eyebrow">Chief Bud — Product Design</p>
+        <h1 class="page-header__title">Eligibility Snapshot<br>Conversation Flow</h1>
+        <p class="page-header__desc">A five-section, no-PII intake sequence that identifies a veteran's housing situation and routes them to the right benefit pathways — in under two minutes.</p>
+      </div>
+
+      <!-- ─── PROCESS DIAGRAM ─── -->
+      <section class="section-block">
+        <h2 class="section-title">Process Diagram</h2>
+        <p class="section-subtitle">The conversation collects five categorical inputs, then branches on housing situation to surface urgency-first or goal-oriented pathways.</p>
+
+        <div class="flow-wrap">
+          <div class="flow">
+
+            <!-- START -->
+            <div class="flow-node flow-node--start">Start</div>
+            <div class="flow-arrow"><div class="flow-arrow__line"></div><div class="flow-arrow__head"></div></div>
+
+            <!-- SECTION A -->
+            <div class="flow-node flow-node--step">
+              <span class="node-label">Section A</span>
+              <div class="node-title">Discharge Type</div>
+              <div class="node-options">
+                <span class="node-option">Honorable</span>
+                <span class="node-option">General (UHC)</span>
+                <span class="node-option">OTH</span>
+                <span class="node-option">BCD</span>
+                <span class="node-option">Dishonorable</span>
+                <span class="node-option">Don't Know</span>
+              </div>
+            </div>
+            <div class="flow-arrow"><div class="flow-arrow__line"></div><div class="flow-arrow__head"></div></div>
+
+            <!-- SECTION B -->
+            <div class="flow-node flow-node--step">
+              <span class="node-label">Section B</span>
+              <div class="node-title">Current Housing Status</div>
+              <div class="node-options">
+                <span class="node-option">Renter — Stable</span>
+                <span class="node-option">Renter — At Risk</span>
+                <span class="node-option">Owner — Stable</span>
+                <span class="node-option">Owner — At Risk</span>
+                <span class="node-option">Doubled Up</span>
+                <span class="node-option">Unsheltered</span>
+                <span class="node-option">Emergency / Transitional</span>
+              </div>
+            </div>
+            <div class="flow-arrow"><div class="flow-arrow__line"></div><div class="flow-arrow__head"></div></div>
+
+            <!-- SECTION C -->
+            <div class="flow-node flow-node--step">
+              <span class="node-label">Section C</span>
+              <div class="node-title">Household Income</div>
+              <div class="node-options">
+                <span class="node-option">AMI Band Selection</span>
+              </div>
+            </div>
+            <div class="flow-arrow"><div class="flow-arrow__line"></div><div class="flow-arrow__head"></div></div>
+
+            <!-- SECTION D -->
+            <div class="flow-node flow-node--step">
+              <span class="node-label">Section D</span>
+              <div class="node-title">Dependents</div>
+              <div class="node-options">
+                <span class="node-option">Yes</span>
+                <span class="node-option">No</span>
+              </div>
+            </div>
+            <div class="flow-arrow"><div class="flow-arrow__line"></div><div class="flow-arrow__head"></div></div>
+
+            <!-- SECTION E -->
+            <div class="flow-node flow-node--step">
+              <span class="node-label">Section E</span>
+              <div class="node-title">VA Disability Rating</div>
+              <div class="node-options">
+                <span class="node-option">0% / No Rating</span>
+                <span class="node-option">10–40%</span>
+                <span class="node-option">50–90%</span>
+                <span class="node-option">100% / P&amp;T</span>
+              </div>
+            </div>
+            <div class="flow-arrow"><div class="flow-arrow__line"></div><div class="flow-arrow__head"></div></div>
+
+            <!-- REVIEW SCREEN -->
+            <div class="flow-node flow-node--step">
+              <span class="node-label">Review</span>
+              <div class="node-title">Review &amp; Confirm Answers</div>
+              <div class="node-options">
+                <span class="node-option">Edit any answer</span>
+                <span class="node-option">Confirm &amp; Submit</span>
+              </div>
+            </div>
+            <div class="flow-arrow"><div class="flow-arrow__line"></div><div class="flow-arrow__head"></div></div>
+
+            <!-- BRANCH GATE -->
+            <div class="flow-node flow-node--branch">
+              Branch: Housing Situation
+            </div>
+            <div class="flow-arrow"><div class="flow-arrow__line"></div><div class="flow-arrow__head"></div></div>
+
+            <!-- SPLIT -->
+            <div class="flow-split">
+
+              <!-- PATH A -->
+              <div class="flow-branch">
+                <div class="flow-branch__label">At Risk / Unhoused</div>
+                <div class="flow-arrow"><div class="flow-arrow__line"></div><div class="flow-arrow__head"></div></div>
+                <div class="flow-node flow-node--outcome">
+                  <div class="node-title">Urgency-First Pathways</div>
+                  <div class="node-desc">HUD-VASH · SSVF · GPD · Emergency Housing Vouchers · Rapid Rehousing</div>
+                </div>
+              </div>
+
+              <!-- PATH B -->
+              <div class="flow-branch">
+                <div class="flow-branch__label">Housing Secure</div>
+                <div class="flow-arrow"><div class="flow-arrow__line"></div><div class="flow-arrow__head"></div></div>
+                <div class="flow-node flow-node--outcome">
+                  <div class="node-title">Goal-Oriented Pathways</div>
+                  <div class="node-desc">VA Home Loan · SAH/SHA Grants · Property Tax Exemptions · VA Refinance · In-Home Support</div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Converge arrow -->
+            <div class="flow-arrow" style="margin-top:4px;"><div class="flow-arrow__line"></div><div class="flow-arrow__head"></div></div>
+
+            <!-- END -->
+            <div class="flow-node flow-node--end">Eligibility Snapshot</div>
+
+          </div>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- ─── DESCRIPTION ─── -->
+      <section class="section-block">
+        <h2 class="section-title">How the Snapshot Works</h2>
+        <p class="section-subtitle">Five categorical questions. No names, no SSNs, no claim numbers — just situation-based inputs that power accurate pathway routing.</p>
+
+        <div class="card-grid card-grid--2" style="margin-top:1.25rem;">
+
+          <div class="card">
+            <p class="card__label">Design Principle</p>
+            <h3 class="card__title">No PII by Design</h3>
+            <p class="card__body">Every input is categorical — discharge type, housing band, income bracket, dependent flag, rating tier. No personally identifiable information is collected, stored, or required. Veterans can complete the Snapshot anonymously.</p>
+          </div>
+
+          <div class="card">
+            <p class="card__label">Design Principle</p>
+            <h3 class="card__title">Under Two Minutes</h3>
+            <p class="card__body">The five intake sections are designed for completion in 90 seconds or less. Plain-language tooltips appear on each option — not jargon. Veterans who don't know their discharge type or rating are guided forward, not blocked.</p>
+          </div>
+
+          <div class="card">
+            <p class="card__label">Routing Logic</p>
+            <h3 class="card__title">Situation-First Branching</h3>
+            <p class="card__body">Housing status drives the primary branch. At-risk and unhoused veterans see urgency-first programs (HUD-VASH, SSVF, Emergency Vouchers) immediately. Stable veterans see goal-oriented pathways (VA Home Loan, SAH/SHA grants, tax exemptions).</p>
+          </div>
+
+          <div class="card">
+            <p class="card__label">Compliance</p>
+            <h3 class="card__title">No Determinations</h3>
+            <p class="card__body">The Snapshot surfaces <em>likely pathways</em> — not eligibility decisions. Language throughout uses "may be eligible," "common requirement," and "typical process." Every pathway includes a verification step: who to contact and how to confirm.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- ─── SECTION KEY ─── -->
+      <section class="section-block">
+        <h2 class="section-title">Section Reference</h2>
+        <p class="section-subtitle">Each section maps to a benefit-routing variable. Answers remain categorical throughout.</p>
+
+        <div class="section-key">
+
+          <div class="key-item">
+            <div class="key-item__code">Section A</div>
+            <div class="key-item__title">Discharge Type</div>
+            <div class="key-item__desc">Determines VA benefits eligibility floor. OTH and BCD trigger Character of Discharge review guidance. "Don't Know" proceeds with all pathways open.</div>
+          </div>
+
+          <div class="key-item">
+            <div class="key-item__code">Section B</div>
+            <div class="key-item__title">Housing Status</div>
+            <div class="key-item__desc">Primary branch variable. Seven bands covering the full housing continuum — from unsheltered to stable homeowner. Drives urgency-first vs. goal-oriented routing.</div>
+          </div>
+
+          <div class="key-item">
+            <div class="key-item__code">Section C</div>
+            <div class="key-item__title">Household Income</div>
+            <div class="key-item__desc">AMI band selection (Area Median Income). Used to qualify income-restricted programs such as Section 8 and SSVF rapid rehousing. No dollar amounts entered.</div>
+          </div>
+
+          <div class="key-item">
+            <div class="key-item__code">Section D</div>
+            <div class="key-item__title">Dependents</div>
+            <div class="key-item__desc">Binary flag for household members who are financially supported. Affects program household size thresholds and VA loan entitlement calculations.</div>
+          </div>
+
+          <div class="key-item">
+            <div class="key-item__code">Section E</div>
+            <div class="key-item__title">VA Disability Rating</div>
+            <div class="key-item__desc">Rating tier (0%, 10–40%, 50–90%, 100%/P&amp;T) gates access to SAH/SHA adaptive housing grants, property tax exemptions, and enhanced loan terms. "No rating" is a valid answer.</div>
+          </div>
+
+          <div class="key-item">
+            <div class="key-item__code">Review</div>
+            <div class="key-item__title">Review Screen</div>
+            <div class="key-item__desc">Displays all five answers before submission. Veterans can edit any answer before the Snapshot is generated. Reduces errors and increases confidence in results.</div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Design note -->
+      <section class="section-block">
+        <div class="card" style="border-color: rgba(4,139,168,0.3); background-color: rgba(4,139,168,0.06);">
+          <p class="card__label" style="color: var(--color-accent);">Source</p>
+          <h3 class="card__title">FigJam Process Board</h3>
+          <p class="card__body">This diagram reflects the Eligibility Snapshot conversation flow as designed in the Chief Bud FigJam process board. The flow covers discharge type, housing status, income, dependents, and disability rating — five categorical inputs that generate a no-PII, situation-based housing benefit snapshot for U.S. veterans and their families.</p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <p>IS-001 — HCI 594 Independent Study | DePaul University CDM | Chad King | Spring 2026</p>
+  </footer>
+
+</body>
+</html>
