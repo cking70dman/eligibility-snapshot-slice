@@ -39,7 +39,7 @@
 
       <!-- Status Banner -->
       <div class="banner banner--accent">
-        <strong>Round 1 testing in progress.</strong> Findings will be updated after each session. Pre-test findings are documented below — Round 1 session findings will appear as sessions are completed.
+        <strong>Round 1 complete.</strong> 9 findings documented from participant sessions (P1). Pre-test heuristic findings are below. Process diagram findings will be added after the process description and diagram are published.
       </div>
 
       <!-- Pre-test Findings -->
@@ -98,16 +98,97 @@
 
       <hr class="divider" />
 
-      <!-- Round 1 Empty State -->
+      <!-- Round 1 Findings -->
       <section class="section-block">
         <h2 class="section-title">Round 1 Findings</h2>
-        <p class="section-subtitle">Moderated think-aloud sessions with veteran participants. 3–5 sessions planned.</p>
-
-        <div class="empty-state">
-          <p class="empty-state__text">
-            Round 1 findings will appear here after sessions are complete.<br />
-            Sessions are currently being scheduled. Check back as IS-001 progresses.
-          </p>
+        <p class="section-subtitle">Moderated think-aloud sessions with veteran participants (P1). 9 findings logged &mdash; UF-R1 series.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Screen</th>
+                <th>Theme</th>
+                <th>Severity</th>
+                <th>Evidence</th>
+                <th>Recommendation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>UF-R1-001</strong></td>
+                <td><code style="font-size: var(--text-xs); background: var(--color-surface-raised); padding: 2px 6px; border-radius: 4px;">/intake Q4</code></td>
+                <td>Means-test misconception drives self-disqualification</td>
+                <td><span class="sev sev--3">3 &mdash; Major</span></td>
+                <td>Participants with higher incomes skipped the flow or selected &ldquo;Prefer not to say&rdquo; due to assumption that income thresholds disqualify them from all programs</td>
+                <td>Add inline framing that income is used to match programs, not screen out &mdash; not all programs are means-tested</td>
+              </tr>
+              <tr>
+                <td><strong>UF-R1-002</strong></td>
+                <td><code style="font-size: var(--text-xs); background: var(--color-surface-raised); padding: 2px 6px; border-radius: 4px;">/intake Q3</code></td>
+                <td>Single-select goal forces wrong primary goal / restart</td>
+                <td><span class="sev sev--3">3 &mdash; Major</span></td>
+                <td>Participants with multiple concurrent goals (e.g., prevent loss AND find affordable housing) could only select one; several selected incorrectly and wanted to restart</td>
+                <td>Allow multi-select on the goal question, or reframe as &ldquo;What is most urgent right now?&rdquo; to reduce decision conflict</td>
+              </tr>
+              <tr>
+                <td><strong>UF-R1-003</strong></td>
+                <td><code style="font-size: var(--text-xs); background: var(--color-surface-raised); padding: 2px 6px; border-radius: 4px;">/intake all steps</code></td>
+                <td>Load-bearing helper text goes unread</td>
+                <td><span class="sev sev--2">2 &mdash; Moderate</span></td>
+                <td>Sub-copy below question headings (e.g., income scope definition, dependents definition) was consistently skipped; participants answered based on the heading alone</td>
+                <td>Move critical definitions inline with options using info modals, or bold key terms in the sub-copy to interrupt scan behavior</td>
+              </tr>
+              <tr>
+                <td><strong>UF-R1-004</strong></td>
+                <td><code style="font-size: var(--text-xs); background: var(--color-surface-raised); padding: 2px 6px; border-radius: 4px;">/intake result</code></td>
+                <td>No operating hours on crisis next-actions</td>
+                <td><span class="sev sev--3">3 &mdash; Major</span></td>
+                <td>Crisis-branch result cards listed hotlines and walk-in centers with no hours; participants could not tell if resources were available at time of use</td>
+                <td>Add operating hours (or &ldquo;24/7&rdquo; designation) to all crisis-branch next-action resources; flag if hours are unverified</td>
+              </tr>
+              <tr>
+                <td><strong>UF-R1-005</strong></td>
+                <td><code style="font-size: var(--text-xs); background: var(--color-surface-raised); padding: 2px 6px; border-radius: 4px;">/intake Q5</code></td>
+                <td>Dependents definition ambiguous</td>
+                <td><span class="sev sev--2">2 &mdash; Moderate</span></td>
+                <td>Participants unsure whether to count a spouse, adult children living in the home, or financially dependent parents; several paused significantly or changed their answer</td>
+                <td>Define &ldquo;dependent&rdquo; explicitly in the info modal: VA definition includes spouse and unmarried children under 18 (or in school/disabled); add examples for edge cases</td>
+              </tr>
+              <tr>
+                <td><strong>UF-R1-006</strong></td>
+                <td><code style="font-size: var(--text-xs); background: var(--color-surface-raised); padding: 2px 6px; border-radius: 4px;">/intake result</code></td>
+                <td>Program names and acronyms opaque</td>
+                <td><span class="sev sev--2">2 &mdash; Moderate</span></td>
+                <td>Result cards showed program names (HUD-VASH, SSVF, GPD) without explanation; participants read them aloud as questions, not as actionable pathways</td>
+                <td>Add a one-line plain-language description beneath each program name on the result card; define acronyms inline on first use</td>
+              </tr>
+              <tr>
+                <td><strong>UF-R1-007</strong></td>
+                <td><code style="font-size: var(--text-xs); background: var(--color-surface-raised); padding: 2px 6px; border-radius: 4px;">/intake result</code></td>
+                <td>Geographic scope ambiguous (Cook County vs. Chicago)</td>
+                <td><span class="sev sev--2">2 &mdash; Moderate</span></td>
+                <td>Participants from suburbs (outside Chicago city limits but inside Cook County) were unsure whether results applied to them; one participant assumed results were &ldquo;Chicago only&rdquo;</td>
+                <td>Add geographic scope label to the result header: &ldquo;Programs available in Chicago and Cook County&rdquo;; clarify where programs are county-wide vs. city-only</td>
+              </tr>
+              <tr>
+                <td><strong>UF-R1-008</strong></td>
+                <td><code style="font-size: var(--text-xs); background: var(--color-surface-raised); padding: 2px 6px; border-radius: 4px;">/intake Q3 result</code></td>
+                <td>Crisis branch needs age-banded routing</td>
+                <td><span class="sev sev--2">2 &mdash; Moderate</span></td>
+                <td>Crisis-branch results did not differentiate for age 55+ veterans; older participants noted that shelters and transitional programs shown were not appropriate for their situation</td>
+                <td>Add age input or derive from context; route 55+ crisis profiles to senior-specific resources (SSVF, VA Community Care, Area Agency on Aging partnerships)</td>
+              </tr>
+              <tr>
+                <td><strong>UF-R1-009</strong></td>
+                <td><code style="font-size: var(--text-xs); background: var(--color-surface-raised); padding: 2px 6px; border-radius: 4px;">/intake Q4</code></td>
+                <td>Income field wording inconsistent</td>
+                <td><span class="sev sev--1">1 &mdash; Cosmetic</span></td>
+                <td>Question heading said &ldquo;annual household income&rdquo; but sub-copy said &ldquo;include all household members&rdquo;; participants read these as potentially different scopes</td>
+                <td>Standardize wording: use &ldquo;annual gross household income (all members)&rdquo; in both the heading and sub-copy</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
 
