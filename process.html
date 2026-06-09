@@ -6,6 +6,301 @@
   <title>Process — IS-001 | DePaul HCI 594</title>
   <meta name="description" content="IS-001 research process: moderated usability protocol, participant criteria, and study artifact library — consent form, observation template, finding log." />
   <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+
+    /* ============================================================
+       Process Diagram — inline styles scoped to this page only
+       ============================================================ */
+
+    .flow-diagram {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      padding: 2rem 1rem;
+    }
+
+    /* ---- Node types ---- */
+    .flow-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 640px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .flow-box {
+      width: 100%;
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      text-align: center;
+      position: relative;
+    }
+
+    /* Terminal nodes (Start / End) */
+    .flow-box--terminal {
+      background-color: var(--color-surface-card);
+      border: 2px solid var(--color-primary);
+      border-radius: 40px;
+      max-width: 220px;
+      margin: 0 auto;
+      padding: 0.75rem 2rem;
+    }
+
+    .flow-box--terminal .flow-box__label {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      color: var(--color-primary);
+      letter-spacing: 0.06em;
+    }
+
+    /* Step nodes */
+    .flow-box--step {
+      background-color: var(--color-surface-card);
+      border: 1px solid var(--color-border);
+    }
+
+    .flow-box--step .flow-box__letter {
+      display: inline-block;
+      background-color: var(--color-primary);
+      color: var(--color-primary-fg);
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      line-height: 28px;
+      text-align: center;
+      margin: 0 auto 0.5rem;
+    }
+
+    .flow-box__title {
+      font-family: var(--font-sans);
+      font-size: var(--text-base);
+      font-weight: 700;
+      color: var(--color-text-base);
+      margin-bottom: 0.25rem;
+    }
+
+    .flow-box__sub {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      line-height: var(--leading-relaxed);
+    }
+
+    /* Branch node (diamond-ish) */
+    .flow-box--branch {
+      background-color: rgba(4, 139, 168, 0.08);
+      border: 1px solid rgba(4, 139, 168, 0.4);
+      border-radius: 8px;
+    }
+
+    .flow-box--branch .flow-box__title {
+      color: #6BD6EC;
+    }
+
+    /* Output node */
+    .flow-box--output {
+      background-color: rgba(255, 191, 0, 0.06);
+      border: 1px solid rgba(255, 191, 0, 0.3);
+    }
+
+    .flow-box--output .flow-box__letter {
+      background-color: rgba(255,191,0,0.15);
+      color: var(--color-primary);
+    }
+
+    /* ---- Connectors ---- */
+    .flow-connector {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      margin: 0;
+    }
+
+    .flow-connector__line {
+      width: 2px;
+      height: 28px;
+      background: linear-gradient(to bottom, var(--color-border), var(--color-border));
+    }
+
+    .flow-connector__arrow {
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 8px solid var(--color-border);
+    }
+
+    /* Branch connector — two-column split */
+    .flow-branch-row {
+      display: flex;
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 640px;
+      justify-content: center;
+      margin: 0.5rem 0;
+    }
+
+    .flow-branch-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    .flow-branch-col .flow-box {
+      max-width: none;
+    }
+
+    .flow-branch-label {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-text-muted);
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+
+    .flow-branch-line {
+      width: 2px;
+      height: 20px;
+      background-color: var(--color-border);
+    }
+
+    /* Horizontal bar linking two branches */
+    .flow-branch-connector {
+      display: flex;
+      width: 100%;
+      max-width: 640px;
+      align-items: flex-start;
+      position: relative;
+      height: 28px;
+      margin-top: -4px;
+    }
+
+    .flow-branch-connector::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: calc(25% - 1px);
+      right: calc(25% - 1px);
+      height: 2px;
+      background-color: var(--color-border);
+    }
+
+    .flow-branch-connector__left,
+    .flow-branch-connector__right {
+      position: absolute;
+      width: 2px;
+      height: 28px;
+      background-color: var(--color-border);
+    }
+
+    .flow-branch-connector__left  { left: calc(25% - 1px); }
+    .flow-branch-connector__right { right: calc(25% - 1px); }
+
+    /* Option pills inside step nodes */
+    .flow-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.375rem;
+      justify-content: center;
+      margin-top: 0.75rem;
+    }
+
+    .flow-option {
+      background-color: var(--color-surface-raised);
+      border: 1px solid var(--color-border);
+      border-radius: 20px;
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      padding: 0.2rem 0.65rem;
+      line-height: 1.4;
+    }
+
+    /* Output sections list inside final node */
+    .flow-output-list {
+      list-style: none;
+      margin-top: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      text-align: left;
+    }
+
+    .flow-output-list li {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      display: flex;
+      gap: 0.5rem;
+      align-items: flex-start;
+    }
+
+    .flow-output-list li::before {
+      content: '›';
+      color: var(--color-primary);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* Step counter strip */
+    .flow-step-count {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-text-subtle);
+      margin-bottom: 0.35rem;
+      text-align: center;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 560px) {
+      .flow-branch-row {
+        flex-direction: column;
+        gap: 0;
+      }
+      .flow-branch-connector {
+        display: none;
+      }
+    }
+
+    /* Design notes callout */
+    .design-note {
+      background-color: rgba(90, 140, 90, 0.07);
+      border: 1px solid rgba(90, 140, 90, 0.3);
+      border-left: 4px solid #5B8C5A;
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: var(--leading-relaxed);
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+
+    .design-note__icon {
+      color: #5B8C5A;
+      font-size: var(--text-base);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .design-note__body strong {
+      color: var(--color-text-base);
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+  </style>
 </head>
 <body>
 
@@ -36,6 +331,283 @@
         <h1 class="page-header__title">Research Process &amp; Artifacts</h1>
         <p class="page-header__desc">Study design, participant criteria, session structure, and the artifact library used to conduct and document IS-001 usability research.</p>
       </div>
+
+      <!-- ================================================
+           PROCESS DIAGRAM SECTION
+           ================================================ -->
+      <section class="section-block">
+        <h2 class="section-title">Eligibility Snapshot — Conversation Flow</h2>
+        <p class="section-subtitle">The full question sequence from entry to output. Each step maps to a question in the prototype and a routing input in the AI prompt (v2.8).</p>
+
+        <!-- Description card -->
+        <div class="card" style="margin-bottom: 2rem;">
+          <p class="card__label">Process Overview</p>
+          <h3 class="card__title">Six questions. One tailored snapshot.</h3>
+          <p class="card__body">
+            The Eligibility Snapshot is a single-task, no-PII intake flow. Veterans answer six categorical questions — discharge type, housing status, urgency or goal, income band, household dependents, and VA disability rating. The answers are injected into a structured prompt (Path A — no RAG) and returned as a formatted snapshot with eight output sections. No personal identifiers are collected at any point.
+          </p>
+          <div class="flow-options" style="margin-top: 1.25rem; justify-content: flex-start; gap: 0.5rem;">
+            <span class="badge badge--in-progress">6 Questions</span>
+            <span class="badge badge--in-progress">8 Output Sections</span>
+            <span class="badge badge--complete">No PII</span>
+            <span class="badge badge--complete">Path A — Prompt Injection</span>
+          </div>
+        </div>
+
+        <!-- THE DIAGRAM -->
+        <div class="flow-diagram" role="img" aria-label="Eligibility Snapshot conversation flow diagram">
+
+          <!-- START -->
+          <div class="flow-node">
+            <div class="flow-box flow-box--terminal">
+              <div class="flow-box__label">Start</div>
+            </div>
+          </div>
+
+          <div class="flow-connector">
+            <div class="flow-connector__line"></div>
+            <div class="flow-connector__arrow"></div>
+          </div>
+
+          <!-- Opening Message -->
+          <div class="flow-node">
+            <div class="flow-step-count">Entry</div>
+            <div class="flow-box flow-box--step">
+              <div class="flow-box__title">Opening Message</div>
+              <div class="flow-box__sub">"I'm a veteran and I don't know what my VA housing benefits are. Let's complete this Eligibility Snapshot and find out!"</div>
+            </div>
+          </div>
+
+          <div class="flow-connector">
+            <div class="flow-connector__line"></div>
+            <div class="flow-connector__arrow"></div>
+          </div>
+
+          <!-- Section A — Discharge Type -->
+          <div class="flow-node">
+            <div class="flow-step-count">Question 1 of 6</div>
+            <div class="flow-box flow-box--step">
+              <div class="flow-box__letter">A</div>
+              <div class="flow-box__title">Discharge Type</div>
+              <div class="flow-box__sub">Determines VA benefit eligibility tier. Tooltips explain each discharge characterization in plain language.</div>
+              <div class="flow-options">
+                <span class="flow-option">Honorable</span>
+                <span class="flow-option">General (Under Honorable)</span>
+                <span class="flow-option">Other Than Honorable</span>
+                <span class="flow-option">Bad Conduct</span>
+                <span class="flow-option">Dishonorable</span>
+                <span class="flow-option">Unknown</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flow-connector">
+            <div class="flow-connector__line"></div>
+            <div class="flow-connector__arrow"></div>
+          </div>
+
+          <!-- Section B — Housing Status -->
+          <div class="flow-node">
+            <div class="flow-step-count">Question 2 of 6</div>
+            <div class="flow-box flow-box--step">
+              <div class="flow-box__letter">B</div>
+              <div class="flow-box__title">Housing Status</div>
+              <div class="flow-box__sub">Establishes housing stability level and routes the conversation to either an urgency question (at-risk/unhoused) or a housing goal question (stable).</div>
+              <div class="flow-options">
+                <span class="flow-option">Renting – Secure</span>
+                <span class="flow-option">Renting – At Risk</span>
+                <span class="flow-option">Owner – Secure</span>
+                <span class="flow-option">Owner – At Risk</span>
+                <span class="flow-option">Temporary (couch surfing)</span>
+                <span class="flow-option">Unhoused (street/vehicle)</span>
+                <span class="flow-option">Shelter or transitional</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flow-connector">
+            <div class="flow-connector__line"></div>
+            <div class="flow-connector__arrow"></div>
+          </div>
+
+          <!-- Branch decision node -->
+          <div class="flow-node">
+            <div class="flow-box flow-box--branch">
+              <div class="flow-box__title">Housing stability branch</div>
+              <div class="flow-box__sub">Routes based on Q2 answer</div>
+            </div>
+          </div>
+
+          <!-- Branch row -->
+          <div class="flow-branch-row">
+            <!-- Left branch — At Risk / Unhoused -->
+            <div class="flow-branch-col">
+              <div class="flow-branch-line"></div>
+              <div class="flow-branch-label">At Risk / Unhoused / Shelter</div>
+              <div class="flow-box flow-box--step" style="border-color: rgba(227,101,91,0.35);">
+                <div class="flow-box__title" style="font-size: var(--text-sm);">Urgency</div>
+                <div class="flow-box__sub">How soon do you need a solution?</div>
+                <div class="flow-options" style="margin-top: 0.5rem;">
+                  <span class="flow-option">Tonight</span>
+                  <span class="flow-option">7 days</span>
+                  <span class="flow-option">30 days</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right branch — Secure -->
+            <div class="flow-branch-col">
+              <div class="flow-branch-line"></div>
+              <div class="flow-branch-label">Renting Secure / Owner Secure</div>
+              <div class="flow-box flow-box--step" style="border-color: rgba(90,140,90,0.35);">
+                <div class="flow-box__title" style="font-size: var(--text-sm);">Housing Goal</div>
+                <div class="flow-box__sub">What is your primary housing goal?</div>
+                <div class="flow-options" style="margin-top: 0.5rem;">
+                  <span class="flow-option">Keep housing stable</span>
+                  <span class="flow-option">Lower rent/mortgage burden</span>
+                  <span class="flow-option">Move to better housing</span>
+                  <span class="flow-option">Plan for homeownership</span>
+                  <span class="flow-option">Other</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reconnect branches -->
+          <div class="flow-branch-connector">
+            <div class="flow-branch-connector__left"></div>
+            <div class="flow-branch-connector__right"></div>
+          </div>
+
+          <div class="flow-connector" style="margin-top: -4px;">
+            <div class="flow-connector__line"></div>
+            <div class="flow-connector__arrow"></div>
+          </div>
+
+          <!-- Section C — Income -->
+          <div class="flow-node">
+            <div class="flow-step-count">Question 4 of 6</div>
+            <div class="flow-box flow-box--step">
+              <div class="flow-box__letter">C</div>
+              <div class="flow-box__title">Income (AMI Band)</div>
+              <div class="flow-box__sub">Approximate annual household income across all members. Used to identify income-based programs. "Prefer not to say" is always available.</div>
+              <div class="flow-options">
+                <span class="flow-option">$0</span>
+                <span class="flow-option">$1 – $14,999</span>
+                <span class="flow-option">$15,000 – $29,999</span>
+                <span class="flow-option">$30,000 – $44,999</span>
+                <span class="flow-option">$45,000 – $59,999</span>
+                <span class="flow-option">$60,000 – $89,999</span>
+                <span class="flow-option">$90,000+</span>
+                <span class="flow-option">Prefer not to say</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flow-connector">
+            <div class="flow-connector__line"></div>
+            <div class="flow-connector__arrow"></div>
+          </div>
+
+          <!-- Section D — Dependents -->
+          <div class="flow-node">
+            <div class="flow-step-count">Question 5 of 6</div>
+            <div class="flow-box flow-box--step">
+              <div class="flow-box__letter">D</div>
+              <div class="flow-box__title">Dependents</div>
+              <div class="flow-box__sub">Number of children, spouse, or others financially supported. Integer stepper 0 – 20. Affects household size calculations for income-based programs.</div>
+            </div>
+          </div>
+
+          <div class="flow-connector">
+            <div class="flow-connector__line"></div>
+            <div class="flow-connector__arrow"></div>
+          </div>
+
+          <!-- Section E — VA Disability Rating -->
+          <div class="flow-node">
+            <div class="flow-step-count">Question 6 of 6</div>
+            <div class="flow-box flow-box--step">
+              <div class="flow-box__letter">E</div>
+              <div class="flow-box__title">VA Disability Rating</div>
+              <div class="flow-box__sub">Percentage rating from VA (0% – 100%) or "Not Rated." Higher ratings unlock additional housing grants and waivers. 10% increment selector.</div>
+              <div class="flow-options">
+                <span class="flow-option">0%</span>
+                <span class="flow-option">10%</span>
+                <span class="flow-option">20%</span>
+                <span class="flow-option">30%</span>
+                <span class="flow-option">40%</span>
+                <span class="flow-option">50%</span>
+                <span class="flow-option">60%</span>
+                <span class="flow-option">70%</span>
+                <span class="flow-option">80%</span>
+                <span class="flow-option">90%</span>
+                <span class="flow-option">100%</span>
+                <span class="flow-option">Not Rated</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flow-connector">
+            <div class="flow-connector__line"></div>
+            <div class="flow-connector__arrow"></div>
+          </div>
+
+          <!-- Output — Eligibility Snapshot -->
+          <div class="flow-node">
+            <div class="flow-step-count">AI Output</div>
+            <div class="flow-box flow-box--step flow-box--output">
+              <div class="flow-box__letter">★</div>
+              <div class="flow-box__title">Eligibility Snapshot</div>
+              <div class="flow-box__sub">Answers injected into Prompt v2.8 via Path A. AI returns eight structured sections.</div>
+              <ul class="flow-output-list">
+                <li>A — BLUF: Bottom-line summary of veteran's situation and top pathway</li>
+                <li>B — Likely Pathways: Programs the veteran may be eligible for</li>
+                <li>C — Top Next Actions: Concrete steps with named contacts</li>
+                <li>D — Document Checklist: What to gather before applying</li>
+                <li>E — Disclaimers: Non-determination language, verification requirements</li>
+                <li>F — Rationale: Explanation of why each pathway was surfaced</li>
+                <li>G — Assumptions + Unknowns: What the snapshot cannot determine</li>
+                <li>H — Additional Resources: VSOs, helplines, state programs</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="flow-connector">
+            <div class="flow-connector__line"></div>
+            <div class="flow-connector__arrow"></div>
+          </div>
+
+          <!-- END -->
+          <div class="flow-node">
+            <div class="flow-box flow-box--terminal">
+              <div class="flow-box__label">End</div>
+            </div>
+          </div>
+
+        </div><!-- /flow-diagram -->
+
+        <!-- Design notes from the Figma board -->
+        <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 2rem;">
+          <div class="design-note">
+            <span class="design-note__icon">◈</span>
+            <div class="design-note__body">
+              <strong>Open Item — Owner Secure pathways</strong>
+              Additional pathways for Owner Secure veterans need to be surfaced in the output: Property Tax Relief &amp; Exemptions, Disability Housing Grants (SAH/SHA), In-Home Care and Support, and VA Cash-Out Refinance options.
+            </div>
+          </div>
+          <div class="design-note">
+            <span class="design-note__icon">◈</span>
+            <div class="design-note__body">
+              <strong>Open Item — Review Screen</strong>
+              A review screen allowing veterans to confirm and edit their answers before final submission is not yet implemented. Flagged for the next iteration.
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <hr class="divider" />
 
       <!-- Research Protocol -->
       <section class="section-block">
@@ -131,7 +703,7 @@
         <div class="card" style="border-color: rgba(4,139,168,0.3); background-color: rgba(4,139,168,0.06);">
           <p class="card__label" style="color: var(--color-accent);">Data Handling Note</p>
           <h3 class="card__title">No PII by Design</h3>
-          <p class="card__body">IS-001 mirrors the Chief Bud product philosophy: no personally identifiable information is collected at any stage of the research. Session notes use participant codes (P01, P02…). Observation records do not capture names, addresses, or service records.</p>
+          <p class="card__body">"IS-001 mirrors the Chief Bud product philosophy: no personally identifiable information is collected at any stage of the research. Session notes use participant codes (P01, P02…). Observation records do not capture names, addresses, or service records."</p>
         </div>
       </section>
 
