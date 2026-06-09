@@ -336,15 +336,16 @@
            PROCESS DIAGRAM SECTION
            ================================================ -->
       <section class="section-block">
-        <h2 class="section-title">Eligibility Snapshot — Conversation Flow</h2>
-        <p class="section-subtitle">The full question sequence from entry to output. Each step maps to a question in the prototype and a routing input in the AI prompt (v2.8).</p>
+        <h2 class="section-title">Eligibility Snapshot P1 — Process Flow</h2>
+        <p class="section-subtitle">The full question sequence from entry to output. Each step maps to a question in the prototype and a routing input in the Eligibility Snapshot AI prompt (v2.8).</p>
 
         <!-- Description card -->
         <div class="card" style="margin-bottom: 2rem;">
           <p class="card__label">Process Overview</p>
           <h3 class="card__title">Six questions. One tailored snapshot.</h3>
-          <p class="card__body">
-            The Eligibility Snapshot is a single-task, no-PII intake flow. Veterans answer six categorical questions — discharge type, housing status, urgency or goal, income band, household dependents, and VA disability rating. The answers are injected into a structured prompt (Path A — no RAG) and returned as a formatted snapshot with eight output sections. No personal identifiers are collected at any point.
+          <p >
+            The Eligibility Snapshot is a single-task intake flow. A veteran answers up to six categorical questions and receives a personalized housing benefit report. It collects no personally identifiable information and makes no eligibility determinations.<br><br>
+            The design solves a discovery problem, not a navigation one. Most veterans do not know which housing programs they may qualify for, so the flow assumes zero prerequisite knowledge: plain-language questions, tooltips that define unfamiliar terms, and an output that ends in concrete, ranked next steps. Housing status sets the path; a single conditional branch routes secure renters and owners to a goal question and everyone else to an urgency question. The answers are injected into the the Eligibility Snapshot prompt, which returns eight fixed sections from BLUF - Bottom Line Up Front, through Additional Resources.
           </p>
           <div class="flow-options" style="margin-top: 1.25rem; justify-content: flex-start; gap: 0.5rem;">
             <span class="badge badge--in-progress">6 Questions</span>
@@ -353,7 +354,26 @@
             <span class="badge badge--complete">Path A — Prompt Injection</span>
           </div>
         </div>
+      <!-- DOC META -->
+      <div class="doc-meta">
+        <div class="doc-meta-item">
+          <span class="doc-meta-item__label">Document ID</span>
+          <span class="doc-meta-item__value"><a href="Veteran_Housing_Benefit_Eligibility_Snapshot_Process_Description_FINAL.pdf">Process Description</a></span>
+        </div>
+        <div class="doc-meta-item">
+          <span class="doc-meta-item__label">Status</span>
+          <span class="doc-meta-item__value">P1</span>
+        </div>
+        <div class="doc-meta-item">
+          <span class="doc-meta-item__label">Author</span>
+          <span class="doc-meta-item__value">Chad King (CDK)</span>
+        </div>
+        <div class="doc-meta-item">
+          <span class="doc-meta-item__label">Course</span>
+          <span class="doc-meta-item__value">HCI 594 Independent Study — DePaul CDM</span>
+        </div>
 
+      </div>
         <!-- THE DIAGRAM -->
         <div class="flow-diagram" role="img" aria-label="Eligibility Snapshot conversation flow diagram">
 
